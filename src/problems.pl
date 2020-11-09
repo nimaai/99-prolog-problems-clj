@@ -150,14 +150,39 @@ drop([X|Xs],N,[X|Ys],K) :- K > 1, K1 is K - 1, drop(Xs,N,Ys,K1).
 % L2 = [d,e,f,g,h,i,k]
 
 split(L1, 0, [], L1).
-split([X | XS], N, [X | YS], ZS) :-
+split([X | Xs], N, [X | Ys], Zs) :-
   N > 0,
   N1 is N - 1,
-  split(XS, N1, YS, ZS). 
+  split(Xs, N1, Ys, Zs). 
 
+% P18 (**) Extract a slice from a list.
+% Given two indices, I and K, the slice is the list containing the elements between the I'th and K'th element of the original list (both limits included). Start counting the elements with 1.
 
+% Example:
+% ?- slice([a,b,c,d,e,f,g,h,i,k],3,7,L).
+% X = [c,d,e,f,g]
 
+slice([X|_],1,1,[X]).
+slice([X|Xs],1,K,[X|Ys]) :-
+  K > 1, 
+  K1 is K - 1,
+  slice(Xs,1,K1,Ys).
+slice([_|Xs],I,K,Ys) :-
+  I > 1, 
+  I1 is I - 1,
+  K1 is K - 1,
+  slice(Xs,I1,K1,Ys).
 
+% P19 (**) Rotate a list N places to the left.
+% Examples:
+% ?- rotate([a,b,c,d,e,f,g,h],3,X).
+% X = [d,e,f,g,h,a,b,c]
 
+% ?- rotate([a,b,c,d,e,f,g,h],-2,X).
+% X = [g,h,a,b,c,d,e,f]
 
+rotate(L1,N,L2) :- 
+   length(L1,NL1), N1 is N mod NL1, rotate_left(L1,N1,L2).
 
+rotate_left(L,0,L).
+rotate_left(L1,N,L2) :- N > 0, split(L1,N,S1,S2), append(S2,S1,L2).

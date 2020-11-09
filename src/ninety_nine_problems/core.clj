@@ -175,8 +175,37 @@
      (is n1 n dec)
      (splito xs n1 ys zs))))
 
+; P18
+(defne sliceo [l i k s]
+  ([[x . _] 1 1 [x]])
+  ([[x . xs] 1 k [x . ys]] (fresh [k1]
+                             (> k 1)
+                             (is k1 k dec)
+                             (sliceo xs 1 k1 ys)))
+  ([[_ . xs] i k ys] (fresh [i1 k1]
+                       (> i 1)
+                       (is i1 i dec)
+                       (is k1 k dec)
+                       (sliceo xs i1 k1 ys))))
+
+; P19
+(defn rotateo [l1 n l2]
+  (letfn [(rotate-lefto [l1 n l2]
+            (matche [l1 n l2]
+              ([l 0 l])
+              ([l1 n l2]
+               (> n 0)
+               (fresh [s1 s2]
+                 (splito l1 n s1 s2)
+                 (appendo s2 s1 l2)))))]
+    (fresh [n1 nl1]
+      (lengtho l1 nl1)
+      (project [n nl1] (== n1 (mod n nl1)))
+      (rotate-lefto l1 n1 l2))))
+
 ;-----------------------------------------------------------------------
 
 (comment
-  (run* [q r]
-    (splito '[a,b,c,d,e,f,g,h,i,k] 3 q r)))
+  (run* [r]
+    (rotateo '[a,b,c,d,e,f,g,h] 3 r))
+  )
