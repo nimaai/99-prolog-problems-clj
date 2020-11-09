@@ -211,9 +211,25 @@
                              (is n1 n dec)
                              (remove-ato x ys n1 zs))))
 
+; P21
+(defne insert-ato [x l n r]
+  ([x xs 1 [x . xs]])
+  ([x [y . ys] n [y . zs]] (fresh [n1]
+                             (> n 1)
+                             (is n1 n dec)
+                             (insert-ato x ys n1 zs))))
+
+; P22
+(defne rangeo [n m l]
+  ([n n [n]])
+  ([n m [n . xs]] (fresh [n1]
+                    (< n m)
+                    (is n1 n inc)
+                    (rangeo n1 m xs))))
+
 ;-----------------------------------------------------------------------
 
 (comment
-  (run* [x r]
-    (remove-ato x '[a,b,c,d] 2 r))
+  (run* [r]
+    (rangeo 4 9 r))
   )

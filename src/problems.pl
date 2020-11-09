@@ -198,3 +198,22 @@ remove_at(X, [Y | Ys], N, [Y | Zs]) :-
   N > 1,
   N1 is N - 1,
   remove_at(X, Ys, N1, Zs).
+
+% P21 (*) Insert an element at a given position into a list.
+% Example:
+% ?- insert_at(alfa,[a,b,c,d],2,L).
+% L = [a,alfa,b,c,d]
+
+insert_at(X, Xs, 1, [X | Xs]).
+insert_at(X, [Y | Ys], N, [Y | Zs]) :-
+  N > 1,
+  N1 is N - 1,
+  insert_at(X, Ys, N1, Zs).
+
+% P22 (*) Create a list containing all integers within a given range.
+% Example:
+% ?- range(4,9,L).
+% L = [4,5,6,7,8,9]
+
+range(N, N, [N]).
+range(N, M, [N | Xs]) :- N < M, N1 is N + 1, range(N1, M, Xs).
