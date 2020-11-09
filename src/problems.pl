@@ -217,3 +217,20 @@ insert_at(X, [Y | Ys], N, [Y | Zs]) :-
 
 range(N, N, [N]).
 range(N, M, [N | Xs]) :- N < M, N1 is N + 1, range(N1, M, Xs).
+
+% P23 (**) Extract a given number of randomly selected elements from a list.
+% The selected items shall be put into a result list.
+% Example:
+% ?- rnd_select([a,b,c,d,e,f,g,h],3,L).
+% L = [e,d,a]
+
+% Hint: Use the built-in random number generator random/2 and the result of problem P20.
+
+rnd_select(_,0,[]).
+rnd_select(Xs,N,[X|Zs]) :-
+  N > 0,
+  length(Xs,L),
+  I is random(L) + 1,
+  remove_at(X,Xs,I,Ys),
+  N1 is N - 1,
+  rnd_select(Ys,N1,Zs).

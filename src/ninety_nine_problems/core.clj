@@ -1,8 +1,8 @@
 (ns ninety-nine-problems.core
-  (:refer-clojure :exclude [== + - > < >= <= =])
+  (:refer-clojure :exclude [== > < >= <= =])
   (:use clojure.core.logic
         clojure.core.logic.arithmetic)
-  (:require [clojure.core.logic.fd :refer [+ -]]))
+  (:require [clojure.core.logic.fd :as fd]))
 
 ; P01
 (defne lasto [x y]
@@ -28,7 +28,7 @@
   ([[] 0])
   ([[_ . r] n]
    (fresh [n1]
-     (- n 1 n1)
+     (fd/- n 1 n1)
      (lengtho r n1))))
 
 ; P05
@@ -227,9 +227,17 @@
                     (is n1 n inc)
                     (rangeo n1 m xs))))
 
+; P23
+(defne rnd-selecto [l n r]
+  ([_ 0 []])
+  ([xs n [x . zs]] (fresh [l i ys n1]
+                     (> n 0)
+                     (lengtho xs l)
+                     (is i l #(-> % rand-int (+ 1)))
+                     (remove-ato x xs i ys)
+                     (is n1 n dec)
+                     (rnd-selecto ys n1 zs))))
+
 ;-----------------------------------------------------------------------
 
-(comment
-  (run* [r]
-    (rangeo 4 9 r))
-  )
+(comment)
