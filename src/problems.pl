@@ -186,3 +186,15 @@ rotate(L1,N,L2) :-
 
 rotate_left(L,0,L).
 rotate_left(L1,N,L2) :- N > 0, split(L1,N,S1,S2), append(S2,S1,L2).
+
+% P20 (*) Remove the K'th element from a list.
+% Example:
+% ?- remove_at(X,[a,b,c,d],2,R).
+% X = b
+% R = [a,c,d]
+
+remove_at(X, [X | Xs], 1, Xs).
+remove_at(X, [Y | Ys], N, [Y | Zs]) :-
+  N > 1,
+  N1 is N - 1,
+  remove_at(X, Ys, N1, Zs).

@@ -203,9 +203,17 @@
       (project [n nl1] (== n1 (mod n nl1)))
       (rotate-lefto l1 n1 l2))))
 
+; P20
+(defne remove-ato [x l n r]
+  ([x [x . xs] 1 xs])
+  ([x [y . ys] n [y . zs]] (fresh [n1]
+                             (> n 1)
+                             (is n1 n dec)
+                             (remove-ato x ys n1 zs))))
+
 ;-----------------------------------------------------------------------
 
 (comment
-  (run* [r]
-    (rotateo '[a,b,c,d,e,f,g,h] 3 r))
+  (run* [x r]
+    (remove-ato x '[a,b,c,d] 2 r))
   )
