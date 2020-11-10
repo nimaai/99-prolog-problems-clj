@@ -238,6 +238,20 @@
                      (is n1 n dec)
                      (rnd-selecto ys n1 zs))))
 
+; P24
+(defn lottoo [n m l]
+  (fresh [r]
+    (rangeo 1 m r)
+    (rnd-selecto r n l)))
+
+; P25
+(defn rand-permuo [x y]
+  (fresh [l]
+    (lengtho x l)
+    (rnd-selecto x l y)))
+
 ;-----------------------------------------------------------------------
 
-(comment)
+(comment
+  (run* [q]
+    (rand-permuo '[a b c d e f] q)))

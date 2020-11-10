@@ -234,3 +234,20 @@ rnd_select(Xs,N,[X|Zs]) :-
   remove_at(X,Xs,I,Ys),
   N1 is N - 1,
   rnd_select(Ys,N1,Zs).
+
+% P24 (*) Lotto: Draw N different random numbers from the set 1..M.
+% The selected numbers shall be put into a result list.
+% Example:
+% ?- rnd_select(6,49,L).
+% L = [23,1,17,33,21,37]
+
+lotto(N, M, L) :- range(1, M, R), rnd_select(R, N, L).
+
+% P25 (*) Generate a random permutation of the elements of a list.
+% Example:
+% ?- rnd_permu([a,b,c,d,e,f],L).
+% L = [b,a,d,c,e,f]
+
+% Hint: Use the solution of problem P23.
+
+rnd_permu(X, Y) :- length(X, L), rnd_select(X, L, Y).
