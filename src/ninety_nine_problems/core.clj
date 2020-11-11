@@ -4,16 +4,6 @@
         clojure.core.logic.arithmetic)
   (:require [clojure.core.logic.fd :as fd]))
 
-; P01
-(defne lasto [x y]
-  ([x [x]])
-  ([x [_ . r]] (lasto x r)))
-
-; P02
-(defne butlasto [x y]
-  ([x [x . [_]]])
-  ([x [_ . r]] (butlasto x r)))
-
 ; P03
 (defne element-ato [x y n]
   ([_ [] _] fail)
