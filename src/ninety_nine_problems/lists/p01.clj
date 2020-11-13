@@ -11,7 +11,7 @@
     ([x [x]])
     ([x [_ . r]] (lasto x r)))
 
-  (t/is (= (l/run* [q] (lasto q '[a b c]))
-           '(c))))
+  (t/is (= (l/run* [q] (lasto q '[a b c d]))
+           '(d))))
 
 (comment (t/run-tests))
