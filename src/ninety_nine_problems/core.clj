@@ -4,31 +4,7 @@
         clojure.core.logic.arithmetic)
   (:require [clojure.core.logic.fd :as fd]))
 
-; P08
-(defne compresso [l c]
-  ([[] []])
-  ([[x] [x]])
-  ([[x x . xs] zs] (fresh [out]
-                     (conso x xs out)
-                     (compresso out zs)))
-  ([[x y . ys] [x . zs]] (fresh [out]
-                           (!= x y)
-                           (conso y ys out)
-                           (compresso out zs))))
-
 ; P09
-(defn packo [l1 l2]
-  (letfn [(transfero [a b c d]
-            (matche [a b c d]
-              ([x [] [] [x]])
-              ([x [y . ys] [y . ys] [x]] (!= x y))
-              ([x [x . xs] ys [x . zs]] (transfero x xs ys zs))))]
-    (matche [l1 l2]
-      ([[] []])
-      ([[x . xs] [z . zs]]
-       (fresh [ys]
-         (transfero x xs ys z)
-         (packo ys zs))))))
 
 ; P10
 (defn encodeo [l1 l2]
