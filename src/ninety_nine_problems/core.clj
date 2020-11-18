@@ -4,22 +4,6 @@
         clojure.core.logic.arithmetic)
   (:require [clojure.core.logic.fd :as fd]))
 
-; P09
-
-; P10
-(defn encodeo [l1 l2]
-  (letfn [(transformo [l1 l2]
-            (matche [l1 l2]
-              ([[] []])
-              ([[[x . xs] . ys] [[n x] . zs]]
-               (fresh [p]
-                 (conso x xs p)
-                 (lengtho p n)
-                 (transformo ys zs)))))]
-    (fresh [p]
-      (packo l1 p)
-      (transformo p l2))))
-
 ; P11
 (defn encode-modifiedo [l1 l2]
   (letfn [(stripo [l1 l2]
