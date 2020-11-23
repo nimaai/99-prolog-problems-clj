@@ -4,31 +4,6 @@
         clojure.core.logic.arithmetic)
   (:require [clojure.core.logic.fd :as fd]))
 
-; P11
-(defn encode-modifiedo [l1 l2]
-  (letfn [(stripo [l1 l2]
-            (matche [l1 l2]
-              ([[] []])
-              ([[[1 x] . ys] [x . zs]] (stripo ys zs))
-              ([[[n x] . ys] [[n x] . zs]]
-               (> n 1)
-               (stripo ys zs))))]
-    (fresh [l]
-      (encodeo l1 l)
-      (stripo l l2))))
-
-; P12
-(defna decodeo [l1 l2]
-  ([[] []])
-  ([[[1 x] . ys] [x . zs]] (decodeo ys zs))
-  ([[[n x] . ys] [x . zs]]
-   (fresh [n1 ys1]
-     (> n 1)
-     (is n1 n dec)
-     (conso [n1 x] ys ys1)
-     (decodeo ys1 zs)))
-  ([[x . ys] [x . zs]] (decodeo ys zs)))
-
 ; P13
 (defn encode-directo [l1 l2]
   (letfn [(counto [a b c d e]

@@ -7,7 +7,11 @@
             [ninety-nine-problems.lists.p09 :refer [packo]]))
 
 (t/with-test
-  (defn encodeo [l1 l2]
+  (defn encodeo
+    "The list l2 is obtained from the list l1 by run-length
+     encoding. Consecutive duplicates of elements are encoded as terms [n,e],
+     where n is the number of duplicates of the element e."
+    [l1 l2]
     (letfn [(transformo [l1 l2]
               (l/matche [l1 l2]
                 ([[] []])
