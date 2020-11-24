@@ -4,24 +4,6 @@
         clojure.core.logic.arithmetic)
   (:require [clojure.core.logic.fd :as fd]))
 
-; P13
-(defn encode-directo [l1 l2]
-  (letfn [(counto [a b c d e]
-            (matche [a b c d e]
-              ([x [] [] 1 x])
-              ([x [] [] n [n x]] (> n 1))
-              ([x [y . ys] [y . ys] 1 x] (!= x y))
-              ([x [y . ys] [y . ys] n [n x]] (> n 1) (!= x y))
-              ([x [x . xs] ys k t] (fresh [k1]
-                                     (is k1 k inc) 
-                                     (counto x xs ys k1 t)))))]
-    (matche [l1 l2]
-      ([[] []])
-      ([[x . xs] [z . zs]]
-       (fresh [ys]
-         (counto x xs ys 1 z)
-         (encode-directo ys zs))))))
-
 ; P14
 (defne duplio [l1 l2]
   ([[] []])
