@@ -4,11 +4,6 @@
         clojure.core.logic.arithmetic)
   (:require [clojure.core.logic.fd :as fd]))
 
-; P14
-(defne duplio [l1 l2]
-  ([[] []])
-  ([[x . y] [x x . z]] (duplio y z)))
-
 ; P15
 (defn n-duplio [l1 n l2]
   (letfn [(n-duplio-ho [l1 n l2 k]
