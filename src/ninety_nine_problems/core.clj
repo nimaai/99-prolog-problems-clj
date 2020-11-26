@@ -4,18 +4,6 @@
         clojure.core.logic.arithmetic)
   (:require [clojure.core.logic.fd :as fd]))
 
-; P16
-(defn dropo [l1 n l2]
-  (letfn [(dropo-ho [l1 n l2 k]
-            (matche [l1 n l2 k]
-              ([[] _ [] _])
-              ([[_ . xs] n ys 1] (dropo-ho xs n ys n))
-              ([[x . xs] n [x . ys] k] (fresh [k1]
-                                         (> k 1)
-                                         (is k1 k dec)
-                                         (dropo-ho xs n ys k1)))))]
-    (dropo-ho l1 n l2 n)))
-
 ; P17
 (defne splito [l n l1 l2]
   ([l 0 [] l])
