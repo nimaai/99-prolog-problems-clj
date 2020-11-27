@@ -4,15 +4,6 @@
         clojure.core.logic.arithmetic)
   (:require [clojure.core.logic.fd :as fd]))
 
-; P17
-(defne splito [l n l1 l2]
-  ([l 0 [] l])
-  ([[x . xs] n [x . ys] zs]
-   (fresh [n1]
-     (> n 0)
-     (is n1 n dec)
-     (splito xs n1 ys zs))))
-
 ; P18
 (defne sliceo [l i k s]
   ([[x . _] 1 1 [x]])
