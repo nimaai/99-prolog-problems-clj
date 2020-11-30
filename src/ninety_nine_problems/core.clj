@@ -4,22 +4,6 @@
         clojure.core.logic.arithmetic)
   (:require [clojure.core.logic.fd :as fd]))
 
-
-; P19
-(defn rotateo [l1 n l2]
-  (letfn [(rotate-lefto [l1 n l2]
-            (matche [l1 n l2]
-              ([l 0 l])
-              ([l1 n l2]
-               (> n 0)
-               (fresh [s1 s2]
-                 (splito l1 n s1 s2)
-                 (appendo s2 s1 l2)))))]
-    (fresh [n1 nl1]
-      (lengtho l1 nl1)
-      (project [n nl1] (== n1 (mod n nl1)))
-      (rotate-lefto l1 n1 l2))))
-
 ; P20
 (defne remove-ato [x l n r]
   ([x [x . xs] 1 xs])
