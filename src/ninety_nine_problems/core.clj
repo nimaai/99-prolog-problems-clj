@@ -4,18 +4,6 @@
         clojure.core.logic.arithmetic)
   (:require [clojure.core.logic.fd :as fd]))
 
-; P18
-(defne sliceo [l i k s]
-  ([[x . _] 1 1 [x]])
-  ([[x . xs] 1 k [x . ys]] (fresh [k1]
-                             (> k 1)
-                             (is k1 k dec)
-                             (sliceo xs 1 k1 ys)))
-  ([[_ . xs] i k ys] (fresh [i1 k1]
-                       (> i 1)
-                       (is i1 i dec)
-                       (is k1 k dec)
-                       (sliceo xs i1 k1 ys))))
 
 ; P19
 (defn rotateo [l1 n l2]
