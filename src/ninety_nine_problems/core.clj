@@ -4,14 +4,6 @@
         clojure.core.logic.arithmetic)
   (:require [clojure.core.logic.fd :as fd]))
 
-; P20
-(defne remove-ato [x l n r]
-  ([x [x . xs] 1 xs])
-  ([x [y . ys] n [y . zs]] (fresh [n1]
-                             (> n 1)
-                             (is n1 n dec)
-                             (remove-ato x ys n1 zs))))
-
 ; P21
 (defne insert-ato [x l n r]
   ([x xs 1 [x . xs]])
