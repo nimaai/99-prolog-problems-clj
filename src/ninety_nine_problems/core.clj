@@ -4,22 +4,6 @@
         clojure.core.logic.arithmetic)
   (:require [clojure.core.logic.fd :as fd]))
 
-; P21
-(defne insert-ato [x l n r]
-  ([x xs 1 [x . xs]])
-  ([x [y . ys] n [y . zs]] (fresh [n1]
-                             (> n 1)
-                             (is n1 n dec)
-                             (insert-ato x ys n1 zs))))
-
-; P22
-(defne rangeo [n m l]
-  ([n n [n]])
-  ([n m [n . xs]] (fresh [n1]
-                    (< n m)
-                    (is n1 n inc)
-                    (rangeo n1 m xs))))
-
 ; P23
 (defne rnd-selecto [l n r]
   ([_ 0 []])
