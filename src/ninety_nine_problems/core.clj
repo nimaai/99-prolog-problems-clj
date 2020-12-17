@@ -4,18 +4,6 @@
         clojure.core.logic.arithmetic)
   (:require [clojure.core.logic.fd :as fd]))
 
-; P24
-(defn lottoo [n m l]
-  (fresh [r]
-    (rangeo 1 m r)
-    (rnd-selecto r n l)))
-
-; P25
-(defn rand-permuo [x y]
-  (fresh [l]
-    (lengtho x l)
-    (rnd-selecto x l y)))
-
 ;-----------------------------------------------------------------------
 
 (comment
